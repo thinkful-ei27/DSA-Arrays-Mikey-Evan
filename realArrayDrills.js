@@ -8,27 +8,38 @@ const replaceSpace = str => {
   return str.replace(regex, '%20');
 };
 
-console.log(replaceSpace('www.thinkful.com /tauh ida parv een'));
+// console.log(replaceSpace('www.thinkful.com /tauh ida parv een'));
 
+// // Filter an array
 
-// Filter an array
+// //  array of numbers,
+// //  remove all numbers that are less than 5
 
+// const removeFourAndBelow = (arr) => {
 
-//  array of numbers,
-//  remove all numbers that are less than 5
+//   // loop over array
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] < 5) {
+//       arr.splice(i, 1);
+//     }
+//   }
+//   return arr;
+// };
 
+const arr = [6, 6, 6, 3, 7, 7, 7, 2];
 
-const removeFourAndBelow = (arr) => {
+// console.log(removeFourAndBelow(arr));
 
-  // loop over array
+const maxSum = arr => {
+  let max = 0;
+  let currentSum = 0;
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] < 5) {
-      arr.splice(i, 1);
-    }
+    let current = arr[i];
+
+    currentSum = Math.max(currentSum + current, 0);
+    max = Math.max(currentSum, max);
   }
-  return arr;
+  return max;
 };
 
-const arr = [6,6,6,3,7,7,7,2];
-
-console.log(removeFourAndBelow(arr));
+console.log(maxSum([-4, -6, -3, -5, -2, 1]));
