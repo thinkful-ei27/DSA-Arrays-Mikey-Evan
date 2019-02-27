@@ -44,7 +44,6 @@ const maxSum = arr => {
 
 // console.log(maxSum([-4, -6, -3, -5, -2, 1]));
 
-
 //  merge arrays
 
 const mergeArrays = (arr1, arr2) => {
@@ -62,5 +61,20 @@ const mergeArrays = (arr1, arr2) => {
 const arr1 = [1, 3, 6, 8, 11];
 
 const arr2 = [2, 3, 5, 8, 9, 10];
+
+const removeChars = (str, remove) => {
+  let newStr = str;
+  for (let i = 0; i < str.length; i++) {
+    for (let j = 0; j < remove.length; j++) {
+      if (str[i] === remove[j]) {
+        newStr = str.slice(0, i) + str.slice(i + 1, str.length);
+        return removeChars(newStr, remove);
+      }
+    }
+  }
+  return newStr;
+};
+
+console.log(removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
 
 // console.log(mergeArrays(arr1, arr2));
