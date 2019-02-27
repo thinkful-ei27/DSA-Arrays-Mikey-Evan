@@ -74,6 +74,20 @@ const removeChars = (str, remove) => {
   return newStr;
 };
 
-console.log(removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
+// console.log(removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
 
 // console.log(mergeArrays(arr1, arr2));
+
+const createProducts = (arr) => {
+  // loop over the array
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    //  ignore value at current index
+    let filteredArray = arr.filter(num => num !== arr[i]);
+    //  value at index becomes product of all other elements of array
+    newArray.push(filteredArray.reduce((acc, number) => acc * number, 1));
+  }
+  return newArray;
+};
+
+console.log(createProducts([1, 3, 9, 4]));
