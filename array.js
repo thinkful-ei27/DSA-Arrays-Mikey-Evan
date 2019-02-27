@@ -10,13 +10,17 @@ class MyArray {
     this.capacity = 0;
   }
   push(value) {
+    if (this.length === this.capacity) {
+      this._resize(this.length + 1) * MyArray.SIZE_RATIO;
+    }
     Memory.set(this.ptr + this.length, value);
+    this.length++;
   }
 
   _resize(size) {
     const oldPtr = this.ptr;
-    this.ptr = Memory.allocate(size * MyArray.SIZE_RATIO);
-    Memory.copy(this.ptr, oldPtr, )
+    this.ptr = Memory.allocate(size);
+    Memory.copy(this.ptr, oldPtr, this.length);
     Memory.free(oldPtr);
   }
 
@@ -30,10 +34,4 @@ class MyArray {
 
 MyArray.SIZE_RATIO = 3;
 
-const array = new MyArray();
-
-array.push(5);
-const five = array.get(0);
-
-console.log(array);
-
+module.exports = MyArray;
