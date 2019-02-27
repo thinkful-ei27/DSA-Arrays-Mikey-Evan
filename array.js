@@ -10,8 +10,8 @@ class MyArray {
     this.capacity = 0;
   }
   push(value) {
-    if (this.length === this.capacity) {
-      this._resize(this.length + 1) * MyArray.SIZE_RATIO;
+    if (this.length >= this.capacity) {
+      this._resize((this.length + 1) * MyArray.SIZE_RATIO);
     }
     Memory.set(this.ptr + this.length, value);
     this.length++;
@@ -22,6 +22,7 @@ class MyArray {
     this.ptr = Memory.allocate(size);
     Memory.copy(this.ptr, oldPtr, this.length);
     Memory.free(oldPtr);
+    this.capacity = size;
   }
 
   get(index) {
@@ -29,6 +30,15 @@ class MyArray {
       throw new Error('not enough length or its negative 🤷🏻‍');
     }
     return Memory.get(this.ptr + index);
+  }
+
+  pop() {
+    if (this.length === 0) {
+      throw new Error('nothing to pop');
+    }
+    const value = Memory.get(this.ptr + this.length - 1);
+    this.length--;
+    return value;
   }
 }
 
