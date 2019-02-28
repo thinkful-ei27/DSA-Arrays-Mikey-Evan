@@ -106,7 +106,7 @@ const zeroRowColumn = (arr) => {
   let outputArray = [];
   let zeroArray = [];
   let oneArray = [];
-//  Get a an array with all zeroes at the length of one of the dementions
+  //  Get a an array with all zeroes at the length of one of the dementions
   while (zeroArray.length < arr.length) {
     zeroArray.push(0);
   }
@@ -156,3 +156,22 @@ const zeroRowColumn = (arr) => {
   return outputArray;
 };
 // console.log(zeroRowColumn(arraySquare));
+
+// String rotation
+
+//  two strings. 
+// see if stings are rotations of one another
+
+const checkForStringRotation = (str1, str2, counter = 0) => {
+  if (str1.length !== str2.length) return false;
+  if (str1.length < counter) return false;
+  let shiftedString = str2.slice(-1) + str2.slice(0, -1);
+  if (shiftedString === str1) {
+    return true;
+  }
+  counter++;
+  return checkForStringRotation(str1, shiftedString, counter);
+};
+
+const ans = checkForStringRotation('tiny computer', 'computertiny ');
+console.log(ans);
