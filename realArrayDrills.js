@@ -10,21 +10,21 @@ const replaceSpace = str => {
 
 // console.log(replaceSpace('www.thinkful.com /tauh ida parv een'));
 
-// // Filter an array
+// Filter an array
 
-// //  array of numbers,
-// //  remove all numbers that are less than 5
+//  array of numbers,
+//  remove all numbers that are less than 5
 
-// const removeFourAndBelow = (arr) => {
+const removeFourAndBelow = (arr) => {
 
-//   // loop over array
-//   for (let i = 0; i < arr.length; i++) {
-//     if (arr[i] < 5) {
-//       arr.splice(i, 1);
-//     }
-//   }
-//   return arr;
-// };
+  // loop over array
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < 5) {
+      arr.splice(i, 1);
+    }
+  }
+  return arr;
+};
 
 const arr = [6, 6, 6, 3, 7, 7, 7, 2];
 
