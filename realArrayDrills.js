@@ -90,4 +90,70 @@ const createProducts = (arr) => {
   return newArray;
 };
 
-console.log(createProducts([1, 3, 9, 4]));
+// console.log(createProducts([1, 3, 9, 4]));
+
+const arraySquare = [
+  [1, 0, 1, 1, 0],
+  [0, 1, 1, 1, 0],
+  [1, 1, 1, 1, 1],
+  [1, 0, 1, 1, 1],
+  [1, 1, 1, 1, 1]
+];
+
+
+const zeroRowColumn = (arr) => {
+  let columnArray = [];
+  let rowArray = [];
+  let outputArray = [];
+  let zeroArray = [];
+  let oneArray = [];
+//  Get a an array with all zeroes at the length of one of the dementions
+  while (zeroArray.length < arr.length) {
+    zeroArray.push(0);
+  }
+
+  //  find the positions of all the zeroes ( shift by one because  0 === 0 returns false ??)
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j] === 0) {
+        rowArray.push(i + 1);
+        columnArray.push(j + 1);
+      }
+    }
+  }
+
+  // oneArray represents rows that will still have ones in them
+  //  match the indexes of zeroed columns with index in one array and insert 0 
+  // shifted by one to avoid falsy 
+
+  for (let i = 0; i < arr.length; i++) {
+    const zero = columnArray.find(y => y === i + 1);
+    if (zero) {
+      oneArray[i] = 0;
+    }
+    else {
+      oneArray[i] = 1;
+    }
+  }
+
+  //  finally , build new 2d array with altered arrays
+  //  once more with position shift
+
+  
+  for (let i = 0; i < arr.length; i++) {
+    const zero = rowArray.find(x => x === i + 1);
+    if (zero) {
+
+      outputArray[i] = zeroArray;
+    } else {
+      outputArray[i] = oneArray;
+    }
+
+  }
+
+  // console.log(rowArray, columnArray);
+
+  return outputArray;
+};
+console.log(zeroRowColumn(arraySquare));
